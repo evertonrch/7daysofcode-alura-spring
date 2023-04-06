@@ -22,16 +22,16 @@ public class ImdbController {
     private final String apiKey = "";
 
     @GetMapping("/top250Movies")
-    public ResponseEntity<?> top250Movies() {
+    public ResponseEntity<ImdbMovie[]> top250Movies() {
 
-        ResponseEntity<RootImdbMovieJson> root = restTemplate
+        ResponseEntity<RootImdbMovieJson> response = restTemplate
                 .getForEntity(URI.create("https://imdb-api.com/en/API/Top250Movies/" + apiKey), RootImdbMovieJson.class);
 
-        if(root.getStatusCodeValue() == 200) {
-            for (ImdbMovie imdbMovie : root.getBody().getImdbMovies()) {
+        if(response.getStatusCodeValue() == 200) {
+            for (ImdbMovie imdbMovie : response.getBody().getImdbMovies())
                 System.out.println(imdbMovie);
-            }
-            return  ResponseEntity.ok(root.getBody().getImdbMovies());
+
+            return  ResponseEntity.ok(response.getBody().getImdbMovies());
         }
         return ResponseEntity.noContent().build();
     }

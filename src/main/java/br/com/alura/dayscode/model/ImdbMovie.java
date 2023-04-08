@@ -1,4 +1,4 @@
-package br.com.alura.dayscode.dto;
+package br.com.alura.dayscode.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

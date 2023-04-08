@@ -1,6 +1,6 @@
 package br.com.alura.dayscode;
 
-import br.com.alura.dayscode.dto.ImdbMovie;
+import br.com.alura.dayscode.model.ImdbMovie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

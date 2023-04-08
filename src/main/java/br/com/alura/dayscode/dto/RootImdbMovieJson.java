@@ -1,5 +1,6 @@
 package br.com.alura.dayscode.dto;
 
+import br.com.alura.dayscode.model.ImdbMovie;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RootImdbMovieJson {

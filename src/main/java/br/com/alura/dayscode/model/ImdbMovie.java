@@ -1,9 +1,5 @@
 package br.com.alura.dayscode.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Arrays;
-
 public class ImdbMovie {
 
     private String id;
@@ -44,7 +40,7 @@ public class ImdbMovie {
         return imDbRating;
     }
 
-    public String imDbRatingCount() {
+    public String getImDbRatingCount() {
         return imDbRatingCount;
     }
 

@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -21,8 +23,21 @@ public class ImdbController {
     @Autowired
     private HTMLGenerator html;
 
+    @GetMapping("/top250")
+    public ResponseEntity<List<ImdbMovie>> byTitle(@RequestParam("title") String title) {
+        List<ImdbMovie> movies = imdbClient.getImdbMovies()
+                .getBody()
+                .stream()
+                .filter(movie -> movie.getTitle().equals(title))
+                .collect(Collectors.toList());
+
+        html.generate(movies);
+        movies.forEach(System.out::println);
+        return ResponseEntity.ok(movies);
+    }
+
     @GetMapping("/top250/console")
-    public ResponseEntity<List<ImdbMovie>> listMovies() {
+    public ResponseEntity<List<ImdbMovie>> listMovies(String title) {
         imdbClient
                 .getImdbMovies()
                 .getBody()

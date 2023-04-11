@@ -40,8 +40,7 @@ public class Application  {
 
 	@Bean
 	public File file() {
-		File file = new File("/home/everton/content.html");
-		return file;
+		return new File("/home/everton/content.html");
 	}
 
 }
